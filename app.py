@@ -19,7 +19,7 @@ if uploaded_file is not None:
     
     # Convert image to bytes
     img_byte_arr = BytesIO()
-    image.save(img_byte_arr, format="JPEG")  # Convert to JPEG format
+    image.save(img_byte_arr, format="JPEG")  
     img_byte_arr = img_byte_arr.getvalue()
 
     # Send request to FastAPI backend
@@ -29,11 +29,23 @@ if uploaded_file is not None:
     if response.status_code == 200:
         prediction = response.json()
         if "license_plate" in prediction:
-            st.write(f"Detected License Plate: {prediction['license_plate']}")
+            region = prediction['license_plate'][:-7]  # All elements except the last 7 (so we leave space for next sections)
+            vehicle_type = prediction['license_plate'][-7]  
+            year = prediction['license_plate'][-6:-4]  
+            number = prediction['license_plate'][-4:]
+
+            def convert_array(arr):
+                if len(arr) == 1:
+                    return str(arr[0])
+                else:
+                    return ' '.join(map(str, arr))
+
+            st.write(f"Region: {convert_array(region)}")      
+            st.write(f"Vehicle type: {vehicle_type}")
+            st.write(f"License number: {''.join(map(str, year))}-{''.join(map(str,number))}")
         else:
             st.write("No license plate detected.")
     else:
         st.write(f"Error connecting to the prediction API: {response.status_code}")
-
 
     #   streamlit run app.py
