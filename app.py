@@ -3,8 +3,9 @@ import requests
 from PIL import Image
 from io import BytesIO
 
+
 # URL of the FastAPI backend
-API_URL = "http://127.0.0.1:8001/predict/"
+API_URL = "https://licence-plate-processor.onrender.com/predict/"
 
 # Streamlit frontend
 st.title("License Plate Reader")

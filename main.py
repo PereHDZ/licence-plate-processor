@@ -4,10 +4,19 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 print("Running FastAPI from:", os.path.abspath(__file__))
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (change this to specific domains if needed)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load the YOLO model
 model = YOLO("best_e30_f0.pt")
