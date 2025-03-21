@@ -4,3 +4,4 @@ ultralytics
 numpy
 pillow
 gdown
+python-multipart
