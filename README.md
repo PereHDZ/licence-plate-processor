@@ -39,9 +39,13 @@ After the elimination of the duplicate train images, these are the numbers for t
 |Train images             |Train labels              |
 |---------------          |---------------           |
 |12.595                   |12.595                    |
+
+
 |Validation images        |Validation labels         |
 |---------------          |---------------           |
 |564                      |564                       |	
+
+
 |Test images              |Test labels               |
 |---------------          |---------------           |	
 |385                      |385                       |		
