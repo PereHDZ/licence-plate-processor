@@ -25,22 +25,28 @@ EXPLORATORY DATA ANALYSIS (EDA)
 These are the conclusions after the Exploratory Data Analysis of the dataset:
 
 Train images and train labels
-	The dataset has 12680 train images and 12680 label files.
-	The number of duplicate train images in the dataset is: 69.
-	The number of duplicate train labels in the dataset is: 7202.
-	The duplicate train images were eliminated.
-	Only the not duplicated train images and his correspondent train label were kept in the train folders.
+-	The dataset has 12680 train images and 12680 label files.
+-	The number of duplicate train images in the dataset is: 69.
+-	The number of duplicate train labels in the dataset is: 7202.
+-	The duplicate train images were eliminated.
+-	Only the not duplicated train images and his correspondent train label were kept in the train folders.
 
 Validation images and validation labels
-	There are no duplicate valid images in the dataset.
+-	There are no duplicate valid images in the dataset.
 
 After the elimination of the duplicate train images, these are the numbers for the train, validation, test images and labels:
-Train images	Train labels
-12.595	12.595
-Validation images	Validation labels
-564	564
-Test images	Test labels
-385	385
+
+|Train images             |Train labels              |
+|---------------          |---------------           |
+|12.595                   |12.595                    |
+|Validation images        |Validation labels         |
+|564                      |564                       |	
+|Test images              |Test labels               |	
+|385                      |385                       |		
+
+
+
+
 
 
 MODEL PREDICTION IMPLEMENTATION
@@ -197,3 +203,15 @@ API AND WEB APPLICATION
 CHALLENGES IDENTIFIED
 
 1)	The dataset had a lot of duplicated train images and duplicated labels and the duplicate images were removed from the train images folder. 
+2) For the model prediction, we started to work on Visual Studio Code in local but the 
+YOLO model needed a lot of processing capacity and we had to make the code on 
+Google Colab and use a GPU in Colab with Google Colab Pro.
+3) As the dataset has a lot of images and it is heavy (2,61 GB), to load the dataset we 
+use two options:
+Option 1: download the dataset from Kaggle using the Kaggle credentials (Kaggle 
+username and Kaggle key).
+Option 2: firstly, uploading the dataset to Google Drive and then, loading the 
+dataset from Google Drive using drive.mount function.
+4) The results of the model prediction provides the class results sorted by confidence 
+score and before the presentation of the results in the web page, we had to sorted 
+the class results taking into account the real order of the characters in the car plate.
