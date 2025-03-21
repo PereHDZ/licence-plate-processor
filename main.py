@@ -5,8 +5,21 @@ from io import BytesIO
 from PIL import Image
 import os
 from fastapi.middleware.cors import CORSMiddleware
+import urllib.request
+from ultralytics import YOLO
 
 print("Running FastAPI from:", os.path.abspath(__file__))
+
+MODEL_PATH = "best_e30_f0.pt"
+FILE_ID = "1WOs2QNzmO_U9cgFHpESVFeb6RqIyrTLe"
+MODEL_URL = f"https://drive.google.com/uc?id={FILE_ID}"
+
+# Download model if it doesn't exist
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model...")
+    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+
+model = YOLO(MODEL_PATH)
 
 app = FastAPI()
 

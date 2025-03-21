@@ -3,3 +3,4 @@ uvicorn
 ultralytics
 numpy
 pillow
+gdown
