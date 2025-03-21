@@ -29,7 +29,7 @@ Train images and train labels
 -	The number of duplicate train images in the dataset is: 69.
 -	The number of duplicate train labels in the dataset is: 7202.
 -	The duplicate train images were eliminated.
--	Only the not duplicated train images and his correspondent train label were kept in the train folders.
+-	Only the non-duplicate train images and his correspondent train label were kept in the train folders.
 
 Validation images and validation labels
 -	There are no duplicate valid images in the dataset.
@@ -59,7 +59,7 @@ MODEL PREDICTION IMPLEMENTATION
 The model used is YOLO version 8 nano with the tunning of two hyperparameters: 
 -Epochs: each epoch represents a full pass over the entire dataset.
 -Freeze: to freeze some YOLO layers when transfer learning. 
-The recommendation to start is to freeze the layers of the backbone of the model and YOLO version 8 has 129 layers in total and 12 layers in the backbone.
+The starting recommendation is to freeze the layers of the backbone of the model and YOLO version 8 has 129 layers in total and 12 layers in the backbone.
 
 The used values were:
 -Epochs: 1, 2, 10, 20 ,30.
@@ -145,14 +145,14 @@ Instances per Class
 
  
 
-As also seen in the Validation metrics table, the dataset is unbalanced because there are some classes with many instances, for example the numbers “0 to 9”, but there are some characters that appears very few times in the dataset, for example the letter “E” (class 17).
+As also seen in the Validation metrics table, the dataset is unbalanced because there are some classes with many instances, for example the numbers “0 to 9”, but there are some characters that appear very few times in the dataset, for example the letter “E” (class 17).
 
 
 Confusion Matrix Normalized
 
- ![Confusion Matrix Normalized](assets/confusion_matrix_normalized_720.png)
+ ![Normalized Confusion Matrix](assets/confusion_matrix_720.png)
 
-The Confusion Matrix Normalized also shows that the dataset is unbalanced because the numbers “0 to 9” have many instances and a good model performance but some letters, like “E” (class 17), have very few instances and a very low model performance.
+The Normalized Confusion Matrix also shows that the dataset is unbalanced because the numbers “0 to 9” have many instances and a good model performance but some letters, like “E” (class 17), have very few instances and a very low model performance.
 
 
 
@@ -208,16 +208,16 @@ API AND WEB APPLICATION
 
 CHALLENGES IDENTIFIED
 
-1)	The dataset had a lot of duplicated train images and duplicated labels and the duplicate images were removed from the train images folder. 
+1)	The dataset had a lot of duplicate train images and duplicate labels and the duplicate images were removed from the train images folder. 
 2) For the model prediction, we started to work on Visual Studio Code in local but the 
-YOLO model needed a lot of processing capacity and we had to make the code on 
-Google Colab and use a GPU in Colab with Google Colab Pro.
-3) As the dataset has a lot of images and it is heavy (2,61 GB), to load the dataset we 
-use two options:
+YOLO model needed a lot of processing capacity. This forced us to make the code on 
+Google Colab and use a GPU with Google Colab Pro.
+3) As the dataset has a lot of images and it is heavy (2,61 GB), we 
+use two options to load the dataset:
 Option 1: download the dataset from Kaggle using the Kaggle credentials (Kaggle 
 username and Kaggle key).
 Option 2: firstly, uploading the dataset to Google Drive and then, loading the 
 dataset from Google Drive using drive.mount function.
 4) The results of the model prediction provides the class results sorted by confidence 
-score and before the presentation of the results in the web page, we had to sorted 
+score and before the presentation of the results in the web page, we had to sort
 the class results taking into account the real order of the characters in the car plate.
