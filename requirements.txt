@@ -3,4 +3,3 @@ uvicorn
 ultralytics
 numpy
 pillow
-python-3.9
